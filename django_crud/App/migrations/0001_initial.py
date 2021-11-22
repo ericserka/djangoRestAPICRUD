@@ -7,32 +7,31 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Noticia',
+            name="Noticia",
             fields=[
-                ('id', models.AutoField(primary_key=True, serialize=False)),
-                ('link', models.CharField(max_length=255)),
-                ('created_at', models.DateTimeField()),
-                ('updated_at', models.DateTimeField()),
+                ("id", models.AutoField(primary_key=True, serialize=False)),
+                ("link", models.CharField(max_length=255)),
+                ("created_at", models.DateTimeField()),
+                ("updated_at", models.DateTimeField()),
             ],
             options={
-                'db_table': 'noticia',
+                "db_table": "noticia",
             },
         ),
         migrations.CreateModel(
-            name='Pessoa',
+            name="Pessoa",
             fields=[
-                ('id', models.AutoField(primary_key=True, serialize=False)),
-                ('nome', models.CharField(max_length=255)),
-                ('created_at', models.DateTimeField()),
-                ('updated_at', models.DateTimeField()),
+                ("id", models.AutoField(primary_key=True, serialize=False)),
+                ("nome", models.CharField(max_length=255)),
+                ("created_at", models.DateTimeField()),
+                ("updated_at", models.DateTimeField()),
             ],
             options={
-                'db_table': 'pessoa',
+                "db_table": "pessoa",
             },
         ),
     ]

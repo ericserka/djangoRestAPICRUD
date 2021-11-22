@@ -10,21 +10,22 @@ from django.db import models
 # auto_now_add = True faz com que created_at seja o valor do dia/hora atual em que a linha da tabela foi criada
 # auto_now = True faz com que updated_at seja alterado para o dia/hora atual sempre que alguma outra coluna da tabela for alterada
 
+
 class Noticia(models.Model):
-    id = models.AutoField(primary_key = True)
+    id = models.AutoField(primary_key=True)
     link = models.CharField(max_length=255)
-    created_at = models.DateTimeField(auto_now_add = True)
-    updated_at = models.DateTimeField(auto_now = True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        db_table = 'noticia'
+        db_table = "noticia"
 
 
 class Pessoa(models.Model):
-    id = models.AutoField(primary_key = True)
+    id = models.AutoField(primary_key=True)
     nome = models.CharField(max_length=255)
-    created_at = models.DateTimeField(auto_now_add = True)
-    updated_at = models.DateTimeField(auto_now = True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        db_table = 'pessoa'
+        db_table = "pessoa"
