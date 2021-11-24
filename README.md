@@ -27,3 +27,4 @@ Instalar os pacotes necessários: ```pip install -r requirements.txt```
         - Executar esse comando se você está criando um banco de dados do zero e ainda não possui tabelas com dados.
     - ```python3.9 manage.py migrate <app_name> --fake-initial``` também aplica as migrations no banco de dados.
         - Porém, o --fake-initial serve para aplicar as migrations apenas onde é possível. Ele ignora as migrations onde as tabelas já existem. Ou seja, executar esse comando se você não começou um banco de dados do zero, se você está conectando em um banco de dados que já possui dados armazenados.
+    - ```python3.9 manage.py migrate auth```, ```python3.9 manage.py migrate contenttypes```, ```python3.9 manage.py migrate sessions``` para evitar warnings na hora de rodar o servidor.
