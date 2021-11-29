@@ -8,8 +8,8 @@ def getNoticia(id):
             return NoticiaSerializer(
                 Noticia.objects.values("id", "link").get(id=id)
             ).data
-        except:
-            return {"message": "Notícia não encontrada!"}
+        except Exception as e:
+            return {"message": "Notícia não encontrada!","exception": str(e)}
     else:
         return NoticiaSerializer(
             Noticia.objects.all().values("id", "link").order_by("-created_at"),
@@ -21,8 +21,8 @@ def postNoticia(noticia_data):
     noticia_serializer = NoticiaSerializer(data=noticia_data)
     if noticia_serializer.is_valid():
         noticia_serializer.save()
-        return {"message": "Criado com sucesso!"}
-    return {"message": "Erro ao criar!"}
+        return {"message": "Notícia riada com sucesso!"}
+    return {"message": "Erro ao criar notícia!"}
 
 
 def putNoticia(noticia_data, id):
@@ -32,16 +32,16 @@ def putNoticia(noticia_data, id):
         )
         if noticia_serializer.is_valid():
             noticia_serializer.save()
-            return {"message": "Atualizado com sucesso!"}
+            return {"message": "Notícia atualizada com sucesso!"}
         else:
-            return {"message": "Erro ao atualizar!"}
-    except:
-        return {"message": "Erro ao atualizar!"}
+            return {"message": "Erro ao atualizar notícia!"}
+    except Exception as e:
+        return {"message": "Erro ao atualizar notícia!","exception": str(e)}
 
 
 def deleteNoticia(id):
     try:
         Noticia.objects.get(id=id).delete()
-        return {"message": "Deletado com sucesso!"}
-    except:
-        return {"message": "Erro ao deletar!"}
+        return {"message": "Notícia deletada com sucesso!"}
+    except Exception as e:
+        return {"message": "Erro ao deletar notícia!","exception": str(e)}

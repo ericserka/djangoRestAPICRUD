@@ -6,8 +6,8 @@ def getPessoa(id):
     if id != 0:
         try:
             return PessoaSerializer(Pessoa.objects.values("id", "nome").get(id=id)).data
-        except:
-            return {"message": "Pessoa não encontrada!"}
+        except Exception as e:
+            return {"message": "Pessoa não encontrada!","exception": str(e)}
     else:
         return PessoaSerializer(
             Pessoa.objects.all().values("id", "nome").order_by("-created_at"), many=True
@@ -18,8 +18,8 @@ def postPessoa(noticia_data):
     pessoa_serializer = PessoaSerializer(data=noticia_data)
     if pessoa_serializer.is_valid():
         pessoa_serializer.save()
-        return {"message": "Criado com sucesso!"}
-    return {"message": "Erro ao criar!"}
+        return {"message": "Pessoa criada com sucesso!"}
+    return {"message": "Erro ao criar pessoa!"}
 
 
 def putPessoa(noticia_data, id):
@@ -29,16 +29,16 @@ def putPessoa(noticia_data, id):
         )
         if pessoa_serializer.is_valid():
             pessoa_serializer.save()
-            return {"message": "Atualizado com sucesso!"}
+            return {"message": "Pessoa atualizada com sucesso!"}
         else:
-            return {"message": "Erro ao atualizar!"}
-    except:
-        return {"message": "Erro ao atualizar!"}
+            return {"message": "Erro ao atualizar pessoa!"}
+    except Exception as e:
+        return {"message": "Erro ao atualizar pessoa!","exception": str(e)}
 
 
 def deletePessoa(id):
     try:
         Pessoa.objects.get(id=id).delete()
-        return {"message": "Deletado com sucesso!"}
-    except:
-        return {"message": "Erro ao deletar!"}
+        return {"message": "Pessoa deletada com sucesso!"}
+    except Exception as e:
+        return {"message": "Erro ao deletar pessoa!","exception": str(e)}
